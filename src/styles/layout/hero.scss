@@ -1,0 +1,140 @@
+@use "../abstracts" as abs;
+
+.hero{
+  margin: auto 5rem;
+  grid-column: 2 / -1;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows: repeat(4,min-content);
+  grid-row-gap: 3rem;
+  grid-column-gap: 1.5rem;
+
+  @media only screen and (max-width: abs.$bp-1300){margin: auto 3rem;}
+  @media only screen and (max-width: abs.$bp-1000){
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+    margin: 2rem 3rem;
+  }
+
+  &__header{
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    &--company{
+      font-size: 3rem;
+      letter-spacing: 2px;
+      color: abs.$color-primary;
+      text-transform: uppercase;
+      @media only screen and (max-width: abs.$bp-1000){font-size: 1.8rem;}
+    }
+    &--product{
+      font-size: 5rem;
+      @media only screen and (max-width: abs.$bp-1000){font-size: 3rem;}
+    }
+  }
+  &__paragraph{
+    grid-column: 1 / -1;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    line-height: 3rem;
+    color: abs.$color-blue--dark;
+  }
+  &__prices{
+    grid-column: 1 / 1;
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+    align-items: center;
+    font-weight: 700;
+    &--actual{
+      position: relative;
+      grid-row: 1 / 2;
+      font-size: 2.5rem;
+      &::after{
+        content: "50%";
+        position: absolute;
+        top: 50%;
+        width: 5rem;
+        margin-left: 1rem;
+        font-size: 2rem;
+        text-align: center;
+        color: abs.$color-primary;
+        background-color: abs.$color-secondary;
+        border-radius: .5rem;
+        transform: translateY(-50%);
+      }
+    }
+
+    &--deprecated{
+      grid-row: 2 / 3;
+      font-size: 1.4rem;
+      text-decoration: line-through;
+      color: abs.$color-blue--grayish;
+    }
+  }
+  &__counter{
+    width: 100%;
+    //Layout
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+    display: grid;
+    grid-template-columns: min-content 1fr min-content;
+    padding: 1rem;
+    //Appearance
+    font-size: 2rem;
+    font-weight: 700;
+    color: abs.$color-black;
+    background-color: abs.$color-blue--gray;
+    border-radius: 1.5rem;
+    @media only screen and (max-width: abs.$bp-750){padding: 0;}
+
+    &--fig{
+      width: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      & img{width: 1.5rem;}
+      &:hover{
+        background-color: abs.$color-secondary;
+        border-radius: 1rem;
+      }
+    }
+
+    &-count{
+      width: 50%;
+      font-size: 2rem;
+      font-weight: 700;
+      justify-self: center;
+      text-align: center;
+      border: none;
+      background-color: abs.$color-blue--gray;
+    }
+  }
+
+  &__add-to-cart{
+    height: 6rem;
+    max-width: 35rem;
+    //Layout
+    grid-column: 2 / -1;
+    grid-row: 4 / 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    //Appearance
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 1.5rem;
+    border: none;
+    color: abs.$color-white;
+    background-color: abs.$color-primary;
+    transition: all .125s ease-in-out;
+    &:hover{
+      transform: scale(1.05);
+      box-shadow: 0 0 2rem .15rem abs.$color-primary;
+    }
+  }
+}

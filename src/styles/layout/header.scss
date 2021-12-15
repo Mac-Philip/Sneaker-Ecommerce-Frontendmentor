@@ -1,0 +1,79 @@
+@use "../abstracts" as abs;
+.header{
+  position: relative;
+  grid-column: 1 / -1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: .15rem solid abs.$color-blue--grayish;
+  @media only screen and (max-width: abs.$bp-750){padding: 0 2rem; position: static}
+  @media only screen and (max-width: abs.$bp-350){padding: 0 1rem}
+  &-logo{
+    width: 20rem;
+    height: 2.5rem;
+    @media only screen and (max-width: abs.$bp-350){width: 15rem; height: 2rem;}
+  }
+  &-nav{
+    height: 100%;
+    margin-left: 7.5rem;
+    @media only screen and (max-width: abs.$bp-1000){margin-left: 2.5rem}
+    @media only screen and (max-width: abs.$bp-750){display: none}
+    &__list{
+      height: 100%;
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      @media only screen and (max-width: abs.$bp-1000){gap: 1rem;}
+      &--item{
+        position: relative;
+        cursor: pointer;
+        height: 100%;
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+        color: abs.$color-blue--dark;
+        @media only screen and (max-width: abs.$bp-1000){font-size: 1.6rem}
+        &:after{
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 0;
+          height: 3px;
+          background-color: abs.$color-primary;
+          transform: translateX(-50%);
+          transition: width .25s ease-in-out;
+        }
+
+        &:hover::after{width: 100%;}
+      }
+    }
+  }
+  &-usermenu{
+    position: relative;
+    display: flex;
+    margin-left: auto;
+    flex-direction: column;
+    &__icons{
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      & span{
+        width: 1.5rem;
+        position: absolute;
+        top: 25%;
+        left: 20%;
+        font-size: 1.2rem;
+        text-align: center;
+        background-color: abs.$color-primary;
+        color: abs.$color-white;
+        border-radius: 1.5rem;
+      }
+    }
+
+    &__profile{
+      width: 6rem;
+      @media only screen and (max-width: abs.$bp-750){width: 4rem;}
+    }
+  }
+}
